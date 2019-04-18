@@ -4,7 +4,13 @@ import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Movies from "./containers/Movies";
 import NewMovie from "./components/NewMovie";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import MovieCard from "./components/MovieCard";
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Switch
+} from "react-router-dom";
 
 import "./App.css";
 
@@ -15,10 +21,17 @@ class App extends Component {
         <Router>
           <Navbar />
           <React.Fragment>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/movies" component={Movies} />
-            <Route exact path="/movies/new" component={NewMovie} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/movies"
+                render={routerProps => <Movies {...routerProps} />}
+              />
+              <Route exact path="/movies/new" component={NewMovie} />
+              <Route exact path="/movies/:id" component={MovieCard} />
+            </Switch>
           </React.Fragment>
         </Router>
         ,;

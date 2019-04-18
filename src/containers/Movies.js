@@ -1,24 +1,19 @@
 import React, { Component } from "react";
-
-const allMovies = [
-  { id: 1, title: "Kingdom Come", genre: "Tall tale", release_year: "1989" },
-  {
-    id: 2,
-    title: "Snowbirds Don't Fly",
-    genre: "Fairy tale",
-    release_year: "1988"
-  }
-];
+import { Link } from "react-router-dom";
+import MovieCard from "../components/MovieCard";
+import App from "../App";
+import { Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Movies extends Component {
-  state = { movies: allMovies };
   render() {
     return (
       <div>
-        <h2> moveis</h2>
-        {this.state.movies.map(movie => (
+        {this.props.movies.map(movie => (
           <div>
-            <h3>{movie.title}</h3>
+            <h3>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            </h3>
             <h6>{movie.release_year}</h6>
           </div>
         ))}
@@ -27,4 +22,10 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+const mapStateToProps = state => {
+  return {
+    movies: state.movies
+  };
+};
+
+export default connect(mapStateToProps)(Movies);
