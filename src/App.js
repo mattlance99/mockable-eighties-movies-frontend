@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Movies from "./containers/Movies";
 import NewMovie from "./components/NewMovie";
 import MovieCard from "./components/MovieCard";
+import Breakfast from "./Breakfast.jpg";
 import {
   BrowserRouter as Router,
   Route,
@@ -20,6 +21,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Navbar />
+
           <React.Fragment>
             <Switch>
               <Route exact path="/" component={Home} />
@@ -34,7 +36,6 @@ class App extends Component {
             </Switch>
           </React.Fragment>
         </Router>
-        ,;
       </div>
     );
   }

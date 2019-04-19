@@ -4,8 +4,12 @@ import MovieCard from "../components/MovieCard";
 import App from "../App";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { fetchMovies } from "../actions/movieActions";
 
 class Movies extends Component {
+  componentDidMount() {
+    this.props.fetchMovies();
+  }
   render() {
     return (
       <div>
@@ -28,4 +32,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Movies);
+export default connect(
+  mapStateToProps,
+  { fetchMovies }
+)(Movies);
