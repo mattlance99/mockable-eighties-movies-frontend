@@ -1,4 +1,5 @@
 import React from "react";
+import Filters from "./Filters";
 
 class NewMovie extends React.Component {
   constructor() {
@@ -11,6 +12,10 @@ class NewMovie extends React.Component {
       image_url: ""
     };
   }
+
+  onChangeType = ({ target: { value } }) => {
+    this.setState({ filters: { ...this.state.filters, type: value } });
+  };
 
   handleChange = e => {
     const name = e.target.name;
@@ -41,6 +46,10 @@ class NewMovie extends React.Component {
             />
           </label>
         </div>
+        <Filters
+          onChangeType={this.onChangeType}
+          onFindPetsClick={this.fetchPets}
+        />
         <div>
           <label>
             Genre:
@@ -53,18 +62,7 @@ class NewMovie extends React.Component {
             />
           </label>
         </div>
-        <div>
-          <label>
-            Release Year:
-            <input
-              id="release_year"
-              type="text"
-              name="release_year"
-              value={this.state.release_year}
-              onChange={this.handleChange}
-            />
-          </label>
-        </div>
+        <div />
         <div>
           <label>
             Image URL:
