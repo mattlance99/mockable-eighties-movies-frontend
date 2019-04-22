@@ -9,7 +9,7 @@ function movieReducer(
     case "LOADING":
       return { ...state, loading: true };
     case "GET_MOVIES":
-      return { ...state, movies: action.movies, loading: false };
+      return { ...state, movies: action.movies, loading: true };
     case "GET_MOVIE":
       return { ...state, movie: action.movie, loading: false };
 

@@ -11,8 +11,18 @@ class MovieCard extends Component {
     if (this.props.loading) {
       return <h2>Loading....</h2>;
     }
-    console.log(this.props.movie);
-    return <h2>{this.props.movie.title}</h2>;
+
+    return (
+      <div className="movie-card">
+        <h2>{this.props.movie.title}</h2>
+        <img
+          src="http://i.imgur.com/bJw8ndW.png"
+          alt={this.props.movie.title}
+        />
+        <h3>{this.props.movie.release_year}</h3>
+        <h3>{this.props.movie.genre}</h3>
+      </div>
+    );
   }
 }
 
