@@ -1,15 +1,17 @@
-function movieReducer(state = [], action) {
-  let idx;
+function movieReducer(
+  state = {
+    movies: [],
+    loading: true
+  },
+  action
+) {
   switch (action.type) {
-    case "ADD_MOVIE":
-      return [...state, action.book];
-
-    case "REMOVE_MOVIE":
-      idx = state.indexOf(action.id);
-      return [...state.slice(0, idx), ...state.slice(idx + 1)];
-
+    case "LOADING":
+      return { ...state, loading: true };
     case "GET_MOVIES":
-      return action.movies;
+      return { ...state, movies: action.movies, loading: false };
+    case "GET_MOVIE":
+      return { ...state, movie: action.movie, loading: false };
 
     default:
       return state;

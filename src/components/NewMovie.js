@@ -62,7 +62,7 @@ class NewMovie extends React.Component {
             />
           </label>
         </div>
-        <div />
+
         <div>
           <label>
             Image URL:

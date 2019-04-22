@@ -5,6 +5,7 @@ import App from "../App";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchMovies } from "../actions/movieActions";
+import MovieForm from "./MovieForm";
 
 class Movies extends Component {
   componentDidMount() {
@@ -21,6 +22,7 @@ class Movies extends Component {
             <h6>{movie.release_year}</h6>
           </div>
         ))}
+        <MovieForm />
       </div>
     );
   }
@@ -28,7 +30,7 @@ class Movies extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.movies
+    movies: state.movieReducer.movies
   };
 };
 
