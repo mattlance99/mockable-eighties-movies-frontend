@@ -1,10 +1,10 @@
 import React from "react";
-import Teenwolf from "../Teenwolf.jpg";
+import ROTN from "../ROTN.jpg";
 
 const About = () => (
   <div>
     <h1>About the site</h1>
-    <img src={Teenwolf} className="Teenwolft" alt="Teenwolf" />
+    <img src={ROTN} className="ROTN" alt="ROTN" />
     <p>
       Ah, Eighties movies. The plot holes were enormous, the story lines were
       sappy, and most conflicts between the hero and the bad guy were resolved
