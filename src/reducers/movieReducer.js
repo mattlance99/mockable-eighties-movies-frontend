@@ -14,7 +14,11 @@ function movieReducer(
       return { ...state, movie: action.movie, loading: false };
     case "ADD_MOVIE":
       //take the new movie that was dispatched from the action and add it to the existing array of movies
-      return { ...state, movies: action.movie, loading: false };
+      return {
+        ...state,
+        movies: [...state.movies, action.movie],
+        loading: false
+      };
 
     default:
       return state;

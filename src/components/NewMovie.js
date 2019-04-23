@@ -7,6 +7,7 @@ const years = [1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989];
 const genres = [
   "Action",
   "Adventure",
+  "Comedy",
   "Crime",
   "Drama",
   "Historical",
@@ -63,17 +64,18 @@ class NewMovie extends Component {
             />
           </label>
         </div>
-        <h3>Select a Release Year</h3>
-        <Filters
-          items={years}
-          name="release_year"
-          onChangeType={this.onChangeType}
-          onFindPetsClick={this.fetchPets}
-        />
+
         <h3>Select a Genre</h3>
         <Filters
           items={genres}
           name="genre"
+          onChangeType={this.onChangeType}
+          onFindPetsClick={this.fetchPets}
+        />
+        <h3>Select a Release Year</h3>
+        <Filters
+          items={years}
+          name="release_year"
           onChangeType={this.onChangeType}
           onFindPetsClick={this.fetchPets}
         />
