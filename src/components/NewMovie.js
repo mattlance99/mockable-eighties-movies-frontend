@@ -46,6 +46,12 @@ class NewMovie extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createMovie(this.state);
+    this.setState({
+      title: "",
+      genre: "",
+      release_year: "",
+      image_url: ""
+    });
   };
 
   render() {
@@ -66,18 +72,12 @@ class NewMovie extends Component {
         </div>
 
         <h3>Select a Genre</h3>
-        <Filters
-          items={genres}
-          name="genre"
-          onChangeType={this.onChangeType}
-          onFindPetsClick={this.fetchPets}
-        />
+        <Filters items={genres} name="genre" onChangeType={this.onChangeType} />
         <h3>Select a Release Year</h3>
         <Filters
           items={years}
           name="release_year"
           onChangeType={this.onChangeType}
-          onFindPetsClick={this.fetchPets}
         />
         <br />
         <div>
