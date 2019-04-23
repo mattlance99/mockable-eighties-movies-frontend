@@ -1,7 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
 import Filters from "./Filters";
+import { createMovie } from "../actions/movieActions";
+import { connect } from "react-redux";
 
-class NewMovie extends React.Component {
+const years = [1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989];
+const genres = [
+  "Action",
+  "Adventure",
+  "Crime",
+  "Drama",
+  "Historical",
+  "Horror",
+  "Musical",
+  "Science Fiction",
+  "War",
+  "Westerns"
+];
+
+class NewMovie extends Component {
   constructor() {
     super();
 
@@ -13,8 +29,8 @@ class NewMovie extends React.Component {
     };
   }
 
-  onChangeType = ({ target: { value } }) => {
-    this.setState({ filters: { ...this.state.filters, type: value } });
+  onChangeType = ({ target: { value, name } }) => {
+    this.setState({ [name]: value });
   };
 
   handleChange = e => {
@@ -28,6 +44,7 @@ class NewMovie extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.createMovie(this.state);
   };
 
   render() {
@@ -46,23 +63,21 @@ class NewMovie extends React.Component {
             />
           </label>
         </div>
+        <h3>Select a Release Year</h3>
         <Filters
+          items={years}
+          name="release_year"
           onChangeType={this.onChangeType}
           onFindPetsClick={this.fetchPets}
         />
-        <div>
-          <label>
-            Genre:
-            <input
-              id="genre"
-              type="text"
-              name="genre"
-              value={this.state.genre}
-              onChange={this.handleChange}
-            />
-          </label>
-        </div>
-
+        <h3>Select a Genre</h3>
+        <Filters
+          items={genres}
+          name="genre"
+          onChangeType={this.onChangeType}
+          onFindPetsClick={this.fetchPets}
+        />
+        <br />
         <div>
           <label>
             Image URL:
@@ -75,7 +90,7 @@ class NewMovie extends React.Component {
             />
           </label>
         </div>
-
+        <br />
         <div>
           <button type="submit">Submit</button>
         </div>
@@ -84,4 +99,7 @@ class NewMovie extends React.Component {
   }
 }
 
-export default NewMovie;
+export default connect(
+  null,
+  { createMovie }
+)(NewMovie);

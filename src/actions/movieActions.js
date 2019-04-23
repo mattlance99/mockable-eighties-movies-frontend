@@ -15,3 +15,20 @@ export function fetchMovie(id) {
       .then(movie => dispatch({ type: "GET_MOVIE", movie }));
   };
 }
+
+export function createMovie(data) {
+  const body = JSON.stringify({ movie: data });
+  return dispatch => {
+    dispatch({ type: "LOADING" });
+    return fetch("http://localhost:3001/movies", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body
+    })
+      .then(response => response.json())
+      .then(movie => dispatch({ type: "ADD_MOVIE", movie }));
+  };
+}
