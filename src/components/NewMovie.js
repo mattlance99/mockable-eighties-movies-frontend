@@ -45,7 +45,7 @@ class NewMovie extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createMovie(this.state);
+    this.props.createMovie(this.state, this.props.history);
     this.setState({
       title: "",
       genre: "",

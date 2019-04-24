@@ -18,7 +18,6 @@ class Movies extends Component {
             <h3>
               <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
             </h3>
-            <h6>{movie.release_year}</h6>
           </div>
         ))}
       </div>

@@ -1,7 +1,8 @@
 function movieReducer(
   state = {
     movies: [],
-    loading: true
+    loading: true,
+    movie: {}
   },
   action
 ) {
@@ -18,6 +19,11 @@ function movieReducer(
         ...state,
         movies: [...state.movies, action.movie],
         loading: false
+      };
+    case "DELETE_MOVIE":
+      return {
+        ...state,
+        movies: state.movies.filter(movie => movie.id !== action.id)
       };
 
     default:
