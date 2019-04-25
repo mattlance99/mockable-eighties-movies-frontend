@@ -22,7 +22,7 @@ class CommentForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createComment(this.state, this.props.history);
+    this.props.createComment(this.state, this.props.movieID);
     this.setState({
       content: ""
     });
@@ -37,10 +37,11 @@ class CommentForm extends Component {
             <input
               id="content"
               type="text"
+              placeholder="placeholder"
+              size="50"
               name="content"
               value={this.state.content}
               onChange={this.handleChange}
-              style={{ width: "500px", height: "50px" }}
             />
           </label>
         </div>

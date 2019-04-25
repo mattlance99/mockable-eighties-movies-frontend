@@ -25,7 +25,26 @@ function movieReducer(
         ...state,
         movies: state.movies.filter(movie => movie.id !== action.id)
       };
-
+    case "ADD_COMMENT":
+      //grab 1 movie from the movies array
+      //add the new comment to the comments array for that movie
+      const newState = {
+        ...state,
+        movies: state.movies.map(movie => {
+          if (movie.id === action.comment.movie_id) {
+            return {
+              ...movie,
+              comments: movie.comments.concat(action.comment)
+            };
+          } else {
+            return movie;
+          }
+        }),
+        loading: false
+      };
+      console.log(state);
+      console.log(newState);
+      return newState;
     default:
       return state;
   }

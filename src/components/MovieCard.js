@@ -15,7 +15,7 @@ class MovieCard extends Component {
     this.props.history.push("/movies");
   };
   render() {
-    console.log("rendering movie card");
+    console.log(this.props.movie);
     if (this.props.loading) {
       return <h2>Loading....</h2>;
     }
@@ -26,7 +26,11 @@ class MovieCard extends Component {
         <img src={this.props.movie.image_url} alt={this.props.movie.title} />
         <h3>{this.props.movie.release_year}</h3>
         <h3>{this.props.movie.genre}</h3>
-        <CommentForm />
+        {this.props.movie.comments.map(comment => (
+          <p>{comment.content}</p>
+        ))}
+
+        <CommentForm movieID={this.props.movie.id} />
         <br />
 
         <button onClick={this.handleDelete}>Delete Movie</button>

@@ -1,26 +1,8 @@
-export function fetchComments() {
+export function createComment(data, movieID) {
+  const body = JSON.stringify({ comment: data });
   return dispatch => {
     dispatch({ type: "LOADING" });
-    return fetch("http://localhost:3001/movies")
-      .then(response => response.json())
-      .then(movies => dispatch({ type: "GET_COMMENTS", movies }));
-  };
-}
-
-export function fetchComment(id) {
-  return dispatch => {
-    dispatch({ type: "LOADING" });
-    return fetch("http://localhost:3001/movies/" + id)
-      .then(response => response.json())
-      .then(movie => dispatch({ type: "GET_COMMENT", movie }));
-  };
-}
-
-export function createComment(data, history) {
-  const body = JSON.stringify({ movie: data });
-  return dispatch => {
-    dispatch({ type: "LOADING" });
-    return fetch("http://localhost:3001/movies", {
+    return fetch(`http://localhost:3001/movies/${movieID}/comments`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -29,9 +11,8 @@ export function createComment(data, history) {
       body
     })
       .then(response => response.json())
-      .then(movie => {
-        dispatch({ type: "ADD_COMMENT", movie });
-        history.push(`/movies/${movie.id}`);
+      .then(comment => {
+        dispatch({ type: "ADD_COMMENT", comment });
       });
   };
 }
