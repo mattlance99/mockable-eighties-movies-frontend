@@ -11,8 +11,8 @@ class MovieCard extends Component {
 
   handleDelete = e => {
     e.preventDefault();
-    this.props.deleteMovie(this.props.movie.id);
-    this.props.history.push("/movies");
+    this.props.deleteMovie(this.props.movie.id, this.props.history);
+    //this.props.history.push("/movies");
   };
   render() {
     console.log(this.props.movie);

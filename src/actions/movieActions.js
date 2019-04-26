@@ -36,7 +36,7 @@ export function createMovie(data, history) {
   };
 }
 
-export function deleteMovie(id) {
+export function deleteMovie(id, history) {
   return dispatch => {
     dispatch({ type: "LOADING" });
     return fetch("http://localhost:3001/movies/" + id, {
@@ -47,6 +47,9 @@ export function deleteMovie(id) {
       }
     })
       .then(response => response.json())
-      .then(id => dispatch({ type: "DELETE_MOVIE", id }));
+      .then(id => {
+        dispatch({ type: "DELETE_MOVIE", id });
+        history.push(`/movies`);
+      });
   };
 }

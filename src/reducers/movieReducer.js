@@ -21,6 +21,7 @@ function movieReducer(
         loading: false
       };
     case "DELETE_MOVIE":
+      console.log(action);
       return {
         ...state,
         movies: state.movies.filter(movie => movie.id !== action.id)
