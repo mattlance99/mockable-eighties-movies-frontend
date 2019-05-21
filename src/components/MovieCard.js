@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Movies from "../containers/Movies";
 import CommentForm from "./CommentForm";
+import Like from "./Like";
 import { connect } from "react-redux";
 import { fetchMovie, deleteMovie } from "../actions/movieActions";
 
@@ -14,6 +15,7 @@ class MovieCard extends Component {
     this.props.deleteMovie(this.props.movie.id, this.props.history);
     //this.props.history.push("/movies");
   };
+
   render() {
     console.log(this.props.movie);
     if (this.props.loading) {
@@ -24,6 +26,9 @@ class MovieCard extends Component {
       <div className="movie-card">
         <h2>{this.props.movie.title}</h2>
         <img src={this.props.movie.image_url} alt={this.props.movie.title} />
+        <br />
+        <Like />
+
         <h3>{this.props.movie.release_year}</h3>
         <h3>{this.props.movie.genre}</h3>
         {this.props.movie.comments.map(comment => (
@@ -46,7 +51,6 @@ const mapStateToProps = (state, props) => {
     movie: state.movieReducer.movie,
     loading: state.movieReducer.loading,
     id
-    //movie: singleMovie,
   };
 };
 export default connect(
