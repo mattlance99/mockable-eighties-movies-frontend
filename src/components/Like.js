@@ -10,24 +10,10 @@ class Like extends Component {
 
   handleLike = e => {
     e.preventDefault();
-    console.log("a");
-    fetch("http://localhost:3001/moviesdfasfdsf")
-      .then(response => {
-        if (response.status !== 200) {
-          throw new Error(response.statusText);
-        } else {
-          console.log("b");
-          return response.json();
-        }
-      })
-      .then(movies => {
-        console.log("c", movies);
-      })
-      .catch(err => {
-        console.log("d", err);
-      });
-    console.log("e");
-    // a e d
+    const newCount = this.state.like + 1;
+    this.setState({
+      like: newCount
+    });
   };
   render() {
     return (
