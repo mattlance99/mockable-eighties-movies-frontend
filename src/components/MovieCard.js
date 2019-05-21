@@ -13,7 +13,10 @@ class MovieCard extends Component {
   handleDelete = e => {
     e.preventDefault();
     this.props.deleteMovie(this.props.movie.id, this.props.history);
-    //this.props.history.push("/movies");
+  };
+
+  handleEdit = e => {
+    e.preventDefault();
   };
 
   render() {
@@ -32,12 +35,13 @@ class MovieCard extends Component {
         <h3>{this.props.movie.release_year}</h3>
         <h3>{this.props.movie.genre}</h3>
         {this.props.movie.comments.map(comment => (
-          <p>{comment.content}</p>
+          <p>
+            {comment.content} <button onClick={this.handleEdit}>Edit </button>
+          </p>
         ))}
 
         <CommentForm movieID={this.props.movie.id} />
         <br />
-
         <button onClick={this.handleDelete}>Delete Movie</button>
       </div>
     );
