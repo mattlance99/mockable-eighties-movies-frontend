@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Filters from "./Filters";
 import { createMovie } from "../actions/movieActions";
 import { connect } from "react-redux";
+import FERRIS from "../FERRIS.gif";
 
 const years = [1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989];
 const genres = [
@@ -59,6 +60,7 @@ class NewMovie extends Component {
       <form onSubmit={this.handleSubmit}>
         <div>
           <h3>Enter a Movie</h3>
+
           <label>
             Title:
             <input
@@ -95,7 +97,9 @@ class NewMovie extends Component {
         <br />
         <div>
           <button type="submit">Submit</button>
+          <br />
         </div>
+        <img src={FERRIS} className="FERRIS" alt="FERRIS" />
       </form>
     );
   }
