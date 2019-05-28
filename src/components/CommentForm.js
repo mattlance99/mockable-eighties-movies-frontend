@@ -15,10 +15,15 @@ class CommentForm extends Component {
   handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
+    if (value !== "") {
+      this.setState({
+        [name]: value
+      });
+    }
 
-    this.setState({
-      [name]: value
-    });
+    //this.setState({
+    //[name]: value
+    //});
   };
 
   handleSubmit = e => {
