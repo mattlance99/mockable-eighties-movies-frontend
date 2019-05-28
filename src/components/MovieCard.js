@@ -15,10 +15,6 @@ class MovieCard extends Component {
     this.props.deleteMovie(this.props.movie.id, this.props.history);
   };
 
-  handleEdit = e => {
-    e.preventDefault();
-  };
-
   render() {
     console.log(this.props.movie);
     if (this.props.loading) {
@@ -37,7 +33,7 @@ class MovieCard extends Component {
         {this.props.movie.comments.map(comment => (
           <p>
             {comment.content}{" "}
-            <button onClick={this.handleEdit}>Delete Comment </button>
+            <button onClick={this.handleDeleteComment}>Delete Comment </button>
           </p>
         ))}
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { createComment } from "../actions/commentActions";
+import { deleteComment } from "../actions/commentActions";
 import { connect } from "react-redux";
 
 class CommentForm extends Component {
@@ -57,5 +58,5 @@ class CommentForm extends Component {
 
 export default connect(
   null,
-  { createComment }
+  { createComment, deleteComment }
 )(CommentForm);
