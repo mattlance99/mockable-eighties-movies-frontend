@@ -59,7 +59,7 @@ class NewMovie extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <h3>Enter a Movie</h3>
+          <h2>Enter a Movie</h2>
 
           <label>
             Title:
@@ -97,8 +97,8 @@ class NewMovie extends Component {
         <br />
         <div>
           <button type="submit">Submit</button>
-          <br />
         </div>
+        <br />
         <img src={FERRIS} className="FERRIS" alt="FERRIS" />
       </form>
     );
