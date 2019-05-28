@@ -10,7 +10,7 @@ function movieReducer(
     case "LOADING":
       return { ...state, loading: true };
     case "GET_MOVIES":
-      return { ...state, movies: action.movies, loading: true };
+      return { ...state, movies: action.movies, loading: false };
     case "GET_MOVIE":
       return { ...state, movie: action.movie, loading: false };
     case "ADD_MOVIE":
@@ -27,8 +27,6 @@ function movieReducer(
         movies: state.movies.filter(movie => movie.id !== action.id)
       };
     case "ADD_COMMENT":
-      //grab 1 movie from the movies array
-      //add the new comment to the comments array for that movie
       const newState = {
         ...state,
         movies: state.movies.map(movie => {
@@ -43,8 +41,6 @@ function movieReducer(
         }),
         loading: false
       };
-      console.log(state);
-      console.log(newState);
       return newState;
     default:
       return state;

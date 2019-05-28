@@ -36,7 +36,8 @@ class MovieCard extends Component {
         <h3>{this.props.movie.genre}</h3>
         {this.props.movie.comments.map(comment => (
           <p>
-            {comment.content} <button onClick={this.handleEdit}>Edit </button>
+            {comment.content}{" "}
+            <button onClick={this.handleEdit}>Delete Comment </button>
           </p>
         ))}
 
