@@ -5,6 +5,7 @@ import App from "../App";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchMovies } from "../actions/movieActions";
+import Collage from "../Collage.jpg";
 
 class Movies extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class Movies extends Component {
   render() {
     return (
       <div>
+        <img src={Collage} className="Collage" alt="Collage" />
         {this.props.movies.map(movie => (
           <div>
             <h3>
